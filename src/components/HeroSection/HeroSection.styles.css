@@ -1,0 +1,70 @@
+.hero-section {
+  display: flex;
+}
+
+.sidebar-menu {
+  width: 200px;
+  padding: 16px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.item-icon {
+  display: grid;
+  place-items: center;
+}
+
+.item-text {
+  margin-left: 16px;
+  font-size: 16px;
+}
+
+.video-container {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.videocard {
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+.video-title {
+  width: 320px;
+  font-weight: bold;
+  /* height: 180px; */
+}
+.channel-title {
+  color: #222;
+}
+.video-viewcount {
+  color: gray;
+  font-size: 12px;
+}
+.video-img {
+  border-radius: 10px;
+}
+
+.watch-list {
+  padding: 0 24px;
+}
+.watch-btn {
+  padding: 8px 16px;
+  margin-right: 14px;
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.watch-btn:first-child,
+.watch-btn:hover {
+  background-color: black;
+  color: #ffff;
+}

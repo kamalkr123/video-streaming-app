@@ -1,0 +1,15 @@
+.chat-username {
+  padding: 0 8px;
+  font-weight: bold;
+}
+
+.chat-message {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+}
+.chat-user-img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
