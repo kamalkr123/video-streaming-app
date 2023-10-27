@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { YOUTUBE_SEARCH_API } from "../../utils/Constants";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,18 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const searchCache = useSelector((store) => store.search);
 
+  const getInputSearchSuggestions = useCallback(async () => {
+    const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const data = await response.json();
+    console.log(data[1]);
+    setSuggestions(data[1]);
+    dispatch(
+      cacheResults({
+        [searchQuery]: data[1],
+      })
+    );
+  }, [dispatch, searchQuery]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchCache[searchQuery]) {
@@ -21,20 +33,7 @@ const SearchBar = () => {
     }, 200);
 
     return () => clearTimeout(timer);
-  }, [searchQuery]);
-
-  const getInputSearchSuggestions = async () => {
-    console.log("apicall");
-    const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
-    const data = await response.json();
-    console.log(data[1]);
-    setSuggestions(data[1]);
-    dispatch(
-      cacheResults({
-        [searchQuery]: data[1],
-      })
-    );
-  };
+  }, [searchQuery, getInputSearchSuggestions, searchCache]);
 
   return (
     <div className="search-container">
